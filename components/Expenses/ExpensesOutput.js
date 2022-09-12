@@ -1,4 +1,6 @@
 import { View, StyleSheet } from 'react-native';
+import { GlobalStyles } from '../../consts/styles';
+
 import ExpensesList from './ExpensesList';
 import ExpensesSummary from './ExpensesSummary';
 
@@ -33,15 +35,59 @@ const DUMMY_EXPENSES = [
     amount: 190.21,
     date: new Date('2020-09-21'),
   },
+  {
+    id: 'e6',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
+  {
+    id: 'e7',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
+  {
+    id: 'e8',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
+  {
+    id: 'e9',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
+  {
+    id: 'e10',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
+  {
+    id: 'e11',
+    description: 'monitor',
+    amount: 190.21,
+    date: new Date('2020-09-21'),
+  },
 ];
 
 export default function ExpensesOutput({ expenses, expensesPeriod }) {
   return (
-    <View>
+    <View style={styles.container}>
       <ExpensesSummary expenses={DUMMY_EXPENSES} periodName={expensesPeriod} />
       <ExpensesList expenses={DUMMY_EXPENSES} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 24,
+    paddingTop: 24,
+    paddingBottom: 0,
+    backgroundColor: GlobalStyles.colors.primary700,
+    flex: 1,
+  },
+});
