@@ -12,8 +12,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RecentExpensesScreen from './screens/RecentExpensesScreen';
 import AllExpensesScreen from './screens/AllExpensesScreen';
 import ManageExpensesScreen from './screens/ManageExpensesScreen';
+
 import { GlobalStyles } from './consts/styles';
 import IconButton from './components/UI/IconButton';
+import ExpensesContextProvider from './store/expenses-contex';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -69,26 +71,28 @@ function ExpensesOverview() {
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-            headerTintColor: 'white',
-          }}
-        >
-          <Stack.Screen
-            name="ExpensesOverview"
-            component={ExpensesOverview}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="ManageExpenses"
-            component={ManageExpensesScreen}
-            options={{ presentation: 'modal' }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <StatusBar style="light" />
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+              headerTintColor: 'white',
+            }}
+          >
+            <Stack.Screen
+              name="ExpensesOverview"
+              component={ExpensesOverview}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ManageExpenses"
+              component={ManageExpensesScreen}
+              options={{ presentation: 'modal' }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }
